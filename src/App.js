@@ -21,13 +21,25 @@ function App() {
 
   // this how we create state hook 
   // using productList1 we can read the value of it and using setProductList we can set value of it 
-  let [productList1,setProductList] = useState(productList) 
+  let [productList1,setProductList] = useState(productList) ;
+
+  const incrementQuantity=(index) => {
+    let newProductList = [...productList1] 
+    newProductList[index].quantity++;
+    setProductList(newProductList);
+  }
+
+  const decrementQuantity=(index) => {
+    let newProductList = [...productList1] 
+    newProductList[index].quantity--;
+    setProductList(newProductList);
+  }
 
   return (
     <>
       <Navbar />
       <main className='container mt-5'>
-        <ProductList productList={productList} />
+        <ProductList productList={productList1} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}/>
       </main>
       {/* <Footer /> */}
     </>
