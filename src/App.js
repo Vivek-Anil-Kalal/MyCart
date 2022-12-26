@@ -1,5 +1,5 @@
 import './App.css';
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Navbar from './component/Navbar.js';
 import ProductList from './component/ProductList.js';
 import Footer from './component/Footer';
@@ -21,39 +21,57 @@ function App() {
 
   // this how we create state hook 
   // using productList1 we can read the value of it and using setProductList we can set value of it 
-  let [productList1,setProductList] = useState(productList) ;
-  let [totalAmount , setTotalAmount] = useState(0) ;
-  
-  
-  const incrementQuantity=(index) => {
+  let [productList1, setProductList] = useState(productList);
+  let [totalAmount, setTotalAmount] = useState(0);
+
+
+  const incrementQuantity = (index) => {
     let newProductList = [...productList1]
-    let newTotalAmount = totalAmount  
+    let newTotalAmount = totalAmount
     newProductList[index].quantity++;
     newTotalAmount += newProductList[index].price   // old price added to current price
     setTotalAmount(newTotalAmount)
     setProductList(newProductList);
   }
 
-  const decrementQuantity=(index) => {
-    let newProductList = [...productList1] 
-    let newTotalAmount = totalAmount  
+  const decrementQuantity = (index) => {
+    let newProductList = [...productList1]
+    let newTotalAmount = totalAmount
     // check if quantity going down to zero
-    if( newProductList[index].quantity > 0 ){
+    if (newProductList[index].quantity > 0) {
       newProductList[index].quantity--
       newTotalAmount -= newProductList[index].price
       setTotalAmount(newTotalAmount)
     }
-    
+
     setProductList(newProductList);
+  }
+
+  const resetQuantity = () => {
+    let newProductList = [...productList1]
+    newProductList.map((product) => {
+      product.quantity = 0
+    })
+    setProductList(newProductList)
+    setTotalAmount(0)
+  }
+
+  const removeItem = (index) => {
+    let newProductList = [...productList1]
+    let newTotalAmount = totalAmount
+    newTotalAmount -= newProductList[index].quantity * newProductList[index].price
+    newProductList.splice(index, 1);
+    setProductList(newProductList)
+    setTotalAmount(newTotalAmount)
   }
 
   return (
     <>
       <Navbar />
       <main className='container mt-5'>
-        <ProductList productList={productList1} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity}/>
+        <ProductList productList={productList1} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeItem={removeItem}/>
       </main>
-      <Footer totalAmount={totalAmount}/>
+      <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} />
     </>
   );
 }

@@ -8,9 +8,12 @@ export default function ProductList(props){     // this is props way another one
     // this props can't be change as they can only be read and used because React follows pure function concept in which if we pass anything inside 
     // the function that doesn't change inside it's value 
 
-    return (                    // product object and its index is passed as key
-        props.productList.map((product,i)=>{
-            return <Product product={product} key={i} incrementQuantity={props.incrementQuantity} index={i} decrementQuantity={props.decrementQuantity}/>    // this key is to differnciate the objects in props uniquely identify
+    return (                    
+        // this is conditional rendering 
+        props.productList.length > 0 ?
+        props.productList.map((product,i)=>{ // product object and its index is passed as key
+            return <Product product={product} key={i} incrementQuantity={props.incrementQuantity} index={i} decrementQuantity={props.decrementQuantity} removeItem={props.removeItem}/>    // this key is to differnciate the objects in props uniquely identify
         })
+        : <h1 className='text-center'>No Product In the list Add some and have fun </h1>
     )
 }
