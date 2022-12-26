@@ -3,7 +3,7 @@ export default function Product(props) {
         // First name of product then will show its price then will show badge in which we can increase or decrease the quantity of that product
         // then finally it's total price 
         <div className="row mt-3">
-            <div className="col-5">
+            <div className="col-4">
                 <h2>{props.product.name} <span className="badge bg-secondary s">₹{props.product.price}</span></h2>
             </div>
             <div className="col-3">
@@ -22,10 +22,10 @@ export default function Product(props) {
                     </button>
                 </div>
             </div>
-            <div className="col-2">
+            <div className="col-2 text-center">
                 {props.product.quantity * props.product.price} {/*to calculate the total*/}
             </div>
-            <button className="btn btn-danger col-2" onClick={() => { props.removeItem(props.index) }}>
+            <button className="btn btn-danger col-3" onClick={() => { props.removeItem(props.index) }}>
                 Remove
             </button>
         </div>

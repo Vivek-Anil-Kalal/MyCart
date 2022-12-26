@@ -1,8 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
 import Navbar from './component/Navbar.js';
-import ProductList from './component/ProductList.js';
+import ProductList from './component/ProductList';
 import Footer from './component/Footer';
+import AddItem from './component/AddItem';
 
 function App() {
   // Array of objects of products
@@ -60,15 +61,28 @@ function App() {
     let newProductList = [...productList1]
     let newTotalAmount = totalAmount
     newTotalAmount -= newProductList[index].quantity * newProductList[index].price
-    newProductList.splice(index, 1);
+    newProductList.splice(index, 1); 
     setProductList(newProductList)
     setTotalAmount(newTotalAmount)
+  }
+
+  const addItem = (name , price) => {
+    let newProductList = [...productList1]
+    newProductList.push(
+      {
+        name:name,
+        price:price,
+        quantity:0
+      }
+    )
+    setProductList(newProductList)
   }
 
   return (
     <>
       <Navbar />
       <main className='container mt-5'>
+        <AddItem addItem={addItem} ></AddItem>
         <ProductList productList={productList1} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeItem={removeItem}/>
       </main>
       <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} />
