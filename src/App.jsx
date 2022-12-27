@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import Navbar from './component/Navbar.js';
+import Navbar from './component/Navbar';
 import ProductList from './component/ProductList';
 import Footer from './component/Footer';
 import AddItem from './component/AddItem';
@@ -77,12 +77,19 @@ function App() {
     )
     setProductList(newProductList)
   }
+  let [len,setLen] = useState(0)
+
+  const giveLength = () =>{
+    // let newProductList = [...productList1]
+    let newLen = len++
+    setLen(newLen)
+  }
 
   return (
     <>
-      <Navbar />
-      <main className='container mt-5'>
-        <AddItem addItem={addItem} ></AddItem>
+      <Navbar giveLength={giveLength} />
+      <main className='container mt-5' >
+        <AddItem addItem={addItem} giveLength={giveLength}></AddItem>
         <ProductList productList={productList1} incrementQuantity={incrementQuantity} decrementQuantity={decrementQuantity} removeItem={removeItem}/>
       </main>
       <Footer totalAmount={totalAmount} resetQuantity={resetQuantity} />

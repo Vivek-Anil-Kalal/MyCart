@@ -13,9 +13,9 @@ class AddItem extends React.Component {
 
     render() {
         return (
-            <form className='row mb-5' onSubmit={(e)=>{
+            <form className='row mb-5' onSubmit={(e) => {
                 e.preventDefault()
-                this.props.addItem(this.state.productName,Number(this.state.productPrice))
+                this.props.addItem(this.state.productName, Number(this.state.productPrice))
             }}>
                 <div className="mb-3 col-4">
                     <label htmlFor="inputName" className="form-label">
@@ -54,7 +54,10 @@ class AddItem extends React.Component {
                         value={this.state.productPrice}
                     />
                 </div>
-                <button type="submit" className="btn btn-primary col-4 btn-sm">
+                <button type="submit" className="btn btn-primary col-4 btn-sm" onClick={() => {
+                    this.props.giveLength()
+                }}
+                >
                     Add
                 </button>
             </form>

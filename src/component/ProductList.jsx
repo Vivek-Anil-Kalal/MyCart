@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from './Product.js'
+import Product from './Product'
 
 export default function ProductList(props){     // this is props way another one is destructure the object i.e {product} 
     // to use props just write (props) and this props object will contain all arguments you pass thorugh calling function and you can use them in 
