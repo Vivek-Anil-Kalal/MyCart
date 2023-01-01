@@ -1,5 +1,5 @@
 import React from "react";
-
+// just adding comment to see commits 
 export default function Footer(props){
     return (
         <div className="row fixed-bottom">
