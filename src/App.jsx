@@ -6,7 +6,6 @@ import Footer from './component/Footer';
 import AddItem from './component/AddItem';
 
 function App() {
-  // tp command added
   // Array of objects of products
   const productList = [
     {
