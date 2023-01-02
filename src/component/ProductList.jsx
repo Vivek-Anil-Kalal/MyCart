@@ -8,6 +8,7 @@ export default function ProductList(props){     // this is props way another one
     // this props can't be change as they can only be read and used because React follows pure function concept in which if we pass anything inside 
     // the function that doesn't change inside it's value 
 
+    // Hello
     return (                    
         // this is conditional rendering 
         props.productList.length > 0 ?
