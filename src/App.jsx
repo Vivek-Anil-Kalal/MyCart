@@ -7,6 +7,7 @@ import AddItem from './component/AddItem';
 
 function App() {
   // Array of objects of products
+  // comment added 
   const productList = [
     {
       price: 9999,
