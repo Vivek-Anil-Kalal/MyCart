@@ -15,7 +15,7 @@ class Navbar extends React.Component {
       <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            MyCart<span> {this.props.listsize} </span>
+            MyCart<span> ({this.props.listsize})</span>
           </a>
         </div>
       </nav>
